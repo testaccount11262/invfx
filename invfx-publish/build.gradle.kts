@@ -1,6 +1,7 @@
 plugins {
     `maven-publish`
     signing
+    id("com.gradleup.nmcp") version "0.0.8"
 }
 
 projectPlugin.tasks.named("clipJar") {
@@ -16,27 +17,6 @@ publishing {
             name = "server"
             url = rootProject.uri(".server/libraries")
         }
-
-        maven {
-            name = "central"
-
-            credentials.runCatching {
-                val nexusUsername: String by project
-                val nexusPassword: String by project
-                username = nexusUsername
-                password = nexusPassword
-            }.onFailure {
-                logger.warn("Failed to load nexus credentials, Check the gradle.properties")
-            }
-
-            url = uri(
-                if ("SNAPSHOT" in version as String) {
-                    "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-                } else {
-                    "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-                }
-            )
-        }
     }
 
     publications {
@@ -49,7 +29,7 @@ publishing {
             pom {
                 name.set(target.name)
                 description.set("Kotlin DSL for PaperMC Inventory GUI")
-                url.set("https://github.com/monun/${rootProject.name}")
+                url.set("https://github.com/testaccount11262/${rootProject.name}")
 
                 licenses {
                     license {
@@ -67,12 +47,20 @@ publishing {
                         roles.addAll("developer")
                         timezone.set("Asia/Seoul")
                     }
+                    developer {
+                        id.set("testaccount11262")
+                        name.set("MariGold")
+                        email.set("sanabi.real@gmail.com")
+                        url.set("https://github.com/testaccount11262")
+                        roles.addAll("Maintainer")
+                        timezone.set("Asia/Seoul")
+                    }
                 }
 
                 scm {
-                    connection.set("scm:git:git://github.com/monun/${rootProject.name}.git")
-                    developerConnection.set("scm:git:ssh://github.com:monun/${rootProject.name}.git")
-                    url.set("https://github.com/monun/${rootProject.name}")
+                    connection.set("scm:git:git://github.com/testaccount11262/${rootProject.name}.git")
+                    developerConnection.set("scm:git:ssh://github.com:testaccount11262/${rootProject.name}.git")
+                    url.set("https://github.com/testaccount11262/${rootProject.name}")
                 }
             }
         }
@@ -90,5 +78,18 @@ publishing {
 
 signing {
     isRequired = true
+    val signingKey: String? by project
+    val signingPassword: String? by project
+    if (signingKey != null && signingPassword != null) {
+        useInMemoryPgpKeys(signingKey, signingPassword)
+    }
     sign(publishing.publications["api"], publishing.publications["core"])
+}
+
+nmcp {
+    publishAllPublications {
+        username.set(providers.gradleProperty("mavenCentralUsername"))
+        password.set(providers.gradleProperty("mavenCentralPassword"))
+        publicationType.set("USER_MANAGED")
+    }
 }
