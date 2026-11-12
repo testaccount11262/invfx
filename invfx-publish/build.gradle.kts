@@ -78,13 +78,20 @@ publishing {
 
 signing {
     isRequired = true
+    val signingKeyId: String? by project
     val signingKey: String? by project
     val signingPassword: String? by project
     if (signingKey != null && signingPassword != null) {
-        useInMemoryPgpKeys(signingKey, signingPassword)
+        val normalizedKey = signingKey!!.replace("\\n", "\n").replace("\r\n", "\n").trim()
+        if (signingKeyId != null) {
+            useInMemoryPgpKeys(signingKeyId, normalizedKey, signingPassword)
+        } else {
+            useInMemoryPgpKeys(normalizedKey, signingPassword)
+        }
     }
     sign(publishing.publications["api"], publishing.publications["core"])
 }
+
 
 nmcp {
     publishAllPublications {
