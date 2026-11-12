@@ -1,3 +1,5 @@
+import java.util.Base64
+
 plugins {
     `maven-publish`
     signing
