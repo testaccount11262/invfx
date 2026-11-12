@@ -43,7 +43,7 @@ listOf("api", "core").forEach { projectName ->
 
             create<Jar>("dokkaJar") {
                 archiveClassifier.set("javadoc")
-                dependsOn("dokkaHtml")
+                dependsOn("dokkaGeneratePublicationHtml")
 
                 from("$buildDir/dokka/html/") {
                     include("**")
