@@ -25,6 +25,7 @@ subprojects {
 
     dependencies {
         compileOnly("io.papermc.paper:paper-api:${Dependency.Paper.Version}-R0.1-SNAPSHOT")
+        compileOnly("commons-lang:commons-lang:2.6")
 
         implementation(kotlin("stdlib"))
         implementation(kotlin("reflect"))
