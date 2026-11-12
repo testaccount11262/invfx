@@ -88,7 +88,7 @@ signing {
         val decodedKey = if (signingKey!!.trim().startsWith("-----BEGIN")) {
             signingKey!!.replace("\\n", "\n").replace("\r\n", "\n").trim()
         } else {
-            String(java.util.Base64.getDecoder().decode(signingKey!!.trim()), Charsets.UTF_8)
+            String(Base64.getDecoder().decode(signingKey!!.trim()), Charsets.UTF_8)
         }
 
         if (signingKeyId != null) {
@@ -99,7 +99,6 @@ signing {
     }
     sign(publishing.publications["api"], publishing.publications["core"])
 }
-
 
 nmcp {
     publishAllPublications {
