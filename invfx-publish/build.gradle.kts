@@ -81,12 +81,18 @@ signing {
     val signingKeyId: String? by project
     val signingKey: String? by project
     val signingPassword: String? by project
+
     if (signingKey != null && signingPassword != null) {
-        val normalizedKey = signingKey!!.replace("\\n", "\n").replace("\r\n", "\n").trim()
-        if (signingKeyId != null) {
-            useInMemoryPgpKeys(signingKeyId, normalizedKey, signingPassword)
+        val decodedKey = if (signingKey!!.trim().startsWith("-----BEGIN")) {
+            signingKey!!.replace("\\n", "\n").replace("\r\n", "\n").trim()
         } else {
-            useInMemoryPgpKeys(normalizedKey, signingPassword)
+            String(java.util.Base64.getDecoder().decode(signingKey!!.trim()), Charsets.UTF_8)
+        }
+
+        if (signingKeyId != null) {
+            useInMemoryPgpKeys(signingKeyId, decodedKey, signingPassword)
+        } else {
+            useInMemoryPgpKeys(decodedKey, signingPassword)
         }
     }
     sign(publishing.publications["api"], publishing.publications["core"])
