@@ -45,7 +45,7 @@ class InvFXSupportImpl : InvFXSupport, Listener {
     override fun newInvFrame(lines: Int, title: Component, init: InvFrame.() -> Unit): InvFrame {
         if (plugin == null) {
             val pluginClassLoader = init.javaClass.classLoader as PluginClassLoader
-            val plugin = pluginClassLoader.plugin
+            val plugin = pluginClassLoader.plugin!!
             require(plugin.isEnabled) { "Plugin is not enabled."}
             plugin.server.pluginManager.registerEvents(this, plugin)
             this.plugin = plugin
