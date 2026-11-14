@@ -16,35 +16,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.monun.invfx.frame
+package io.github.testaccount11262.invfx.frame
 
-import io.github.monun.invfx.InvDSL
+import io.github.testaccount11262.invfx.InvDSL
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.ItemStack
 
 @InvDSL
-interface InvList<T>: InvRegion {
-    var index: Int
+interface InvSpace {
+    fun onClick(onClick: (x: Int, y: Int, event: InventoryClickEvent) -> Unit)
 
-    var page: Double
+    fun item(x: Int, y: Int): ItemStack?
 
-    val displays: List<Pair<T, ItemStack>>
-
-    fun onClickItem(onClickItem: (x: Int, y: Int, item: Pair<T, ItemStack>, event: InventoryClickEvent) -> Unit)
-
-    fun onUpdate(onUpdate: (list: List<Pair<T, ItemStack>>, index: Int) -> Unit)
-
-    fun transform(transform: (T) -> ItemStack)
-
-    fun refresh() {
-        index = index
-    }
-
-    fun first() {
-        index = 0
-    }
-
-    fun last() {
-        index = Int.MAX_VALUE
-    }
+    fun item(x: Int, y: Int, item: ItemStack?)
 }

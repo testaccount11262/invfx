@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.monun.invfx.util
+package io.github.testaccount11262.invfx.util
 
 import java.lang.ref.WeakReference
 import kotlin.reflect.KProperty

@@ -16,10 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.monun.invfx.plugin
+package io.github.testaccount11262.invfx.plugin
 
-import io.github.monun.invfx.InvFX
-import io.github.monun.invfx.openFrame
+import io.github.testaccount11262.invfx.InvFX
+import io.github.testaccount11262.invfx.openFrame
 import net.kyori.adventure.text.Component.text
 import org.bukkit.Material
 import org.bukkit.command.Command

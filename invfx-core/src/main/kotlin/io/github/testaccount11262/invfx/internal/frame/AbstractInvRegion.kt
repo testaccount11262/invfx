@@ -16,9 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.monun.invfx.internal.frame
+package io.github.testaccount11262.invfx.internal.frame
 
-import io.github.monun.invfx.frame.InvRegion
+import io.github.testaccount11262.invfx.frame.InvRegion
 import org.bukkit.event.inventory.InventoryClickEvent
 
 abstract class AbstractInvRegion(

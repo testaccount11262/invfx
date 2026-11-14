@@ -16,33 +16,35 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.monun.invfx.frame
+package io.github.testaccount11262.invfx.frame
 
-import io.github.monun.invfx.InvDSL
+import io.github.testaccount11262.invfx.InvDSL
+import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.inventory.ItemStack
 
 @InvDSL
-interface InvRegion {
-    val minX: Int
-    val minY: Int
-    val maxX: Int
-    val maxY: Int
+interface InvList<T>: InvRegion {
+    var index: Int
 
-    val width: Int
-        get() = maxX - minX + 1
+    var page: Double
 
-    val height: Int
-        get() = maxY - minY + 1
+    val displays: List<Pair<T, ItemStack>>
 
-    val size: Int
-        get() = width * height
+    fun onClickItem(onClickItem: (x: Int, y: Int, item: Pair<T, ItemStack>, event: InventoryClickEvent) -> Unit)
 
-    fun overlaps(minX: Int, minY: Int, maxX: Int, maxY: Int): Boolean {
-        return this.minX <= maxX && this.maxX >= minX && this.minY <= maxY && this.maxY >= minY
+    fun onUpdate(onUpdate: (list: List<Pair<T, ItemStack>>, index: Int) -> Unit)
+
+    fun transform(transform: (T) -> ItemStack)
+
+    fun refresh() {
+        index = index
     }
 
-    fun overlaps(region: InvRegion) = overlaps(region.minX, region.minY, region.maxX, region.maxY)
+    fun first() {
+        index = 0
+    }
 
-    fun contains(x: Int, y: Int): Boolean {
-        return x in minX..maxX && y in minY..maxY
+    fun last() {
+        index = Int.MAX_VALUE
     }
 }

@@ -16,12 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.monun.invfx.internal
+package io.github.testaccount11262.invfx.internal
 
-import io.github.monun.invfx.InvFXSupport
-import io.github.monun.invfx.InvWindow
-import io.github.monun.invfx.frame.InvFrame
-import io.github.monun.invfx.internal.frame.InvFrameImpl
+import io.github.testaccount11262.invfx.InvFXSupport
+import io.github.testaccount11262.invfx.InvWindow
+import io.github.testaccount11262.invfx.frame.InvFrame
+import io.github.testaccount11262.invfx.internal.frame.InvFrameImpl
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player

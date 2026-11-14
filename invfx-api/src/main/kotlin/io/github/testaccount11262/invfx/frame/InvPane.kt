@@ -16,9 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.monun.invfx.frame
+package io.github.testaccount11262.invfx.frame
 
-import io.github.monun.invfx.InvDSL
+import io.github.testaccount11262.invfx.InvDSL
 
 @InvDSL
 interface InvPane: InvRegion, InvSpace

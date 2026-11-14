@@ -16,13 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.monun.invfx.internal.frame
+package io.github.testaccount11262.invfx.internal.frame
 
-import io.github.monun.invfx.frame.InvSlot
-import io.github.monun.invfx.util.getValue
-import io.github.monun.invfx.util.lazyVal
-import io.github.monun.invfx.util.setValue
-import io.github.monun.invfx.util.weak
+import io.github.testaccount11262.invfx.frame.InvSlot
+import io.github.testaccount11262.invfx.util.getValue
+import io.github.testaccount11262.invfx.util.lazyVal
+import io.github.testaccount11262.invfx.util.setValue
+import io.github.testaccount11262.invfx.util.weak
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.ItemStack
 

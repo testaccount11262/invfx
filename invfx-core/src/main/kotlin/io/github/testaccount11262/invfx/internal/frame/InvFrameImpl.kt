@@ -16,16 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.monun.invfx.internal.frame
+package io.github.testaccount11262.invfx.internal.frame
 
-import io.github.monun.invfx.InvWindow
-import io.github.monun.invfx.frame.InvFrame
-import io.github.monun.invfx.frame.InvList
-import io.github.monun.invfx.frame.InvPane
-import io.github.monun.invfx.frame.InvSlot
-import io.github.monun.invfx.util.getValue
-import io.github.monun.invfx.util.lazyVal
-import io.github.monun.invfx.util.setValue
+import io.github.testaccount11262.invfx.InvWindow
+import io.github.testaccount11262.invfx.frame.InvFrame
+import io.github.testaccount11262.invfx.frame.InvList
+import io.github.testaccount11262.invfx.frame.InvPane
+import io.github.testaccount11262.invfx.frame.InvSlot
+import io.github.testaccount11262.invfx.util.getValue
+import io.github.testaccount11262.invfx.util.lazyVal
+import io.github.testaccount11262.invfx.util.setValue
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.event.Cancellable
